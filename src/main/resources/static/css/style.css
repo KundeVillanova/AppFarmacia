@@ -1,0 +1,18 @@
+body {
+    background-color: blueviolet;
+    color: aliceblue;
+    font-family: Verdana;
+}
+
+lh {
+    text-align: left;
+}
+
+section {
+    box-sizing: border-box;
+    border-radius: 30px;
+    width: 600px;
+    margin: auto;
+    background-color: darkblue;
+    padding: 50px;
+}
