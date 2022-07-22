@@ -5,7 +5,6 @@ import br.csi.model.usuario.Permissao;
 import br.csi.model.usuario.Usuario;
 
 import java.sql.*;
-import java.util.Calendar;
 
 public class UsuarioDao {
 
@@ -40,32 +39,22 @@ public class UsuarioDao {
         }
         return usuario;
     }
-    public Usuario setUsuario(Usuario u){
-        Calendar calendar = Calendar.getInstance();
-        Date startDate = new Date(calendar.getTime().getTime());
-
+    public Usuario criarUsuario(Usuario u){
+//        Calendar calendar = Calendar.getInstance();
+//
         try (Connection connection = new ConexaoBD().getConexao()) {
-
-            this.sql = "INSERT INTO usuario (nome, email, senha, data_cadastro, ativo, id_permissao) VALUES (?, ?, ?, ?, ?, ?)";
+            this.sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
             System.out.println(u.getNome());
             this.preparedStatement = connection.prepareStatement(sql);
             this.preparedStatement.setString(1, u.getNome());
             this.preparedStatement.setString(2, u.getEmail());
             this.preparedStatement.setString(3, u.getSenha());
-            this.preparedStatement.setDate(4, startDate);
-            this.preparedStatement.setBoolean(5, true);
-            this.preparedStatement.setInt(6, 2);
             this.preparedStatement.execute();
-        }
-        catch (SQLException e){
+        } catch (SQLException e){
             e.printStackTrace();
         }
         return u;
     }
-
-
-    //////new stufff
-
     public Usuario getUsuarioUnico(int id) {
         Usuario usuario = new Usuario();
 
@@ -86,12 +75,11 @@ public class UsuarioDao {
                 usuario.setNome(this.resultSet.getString("nome"));
                 usuario.setEmail(this.resultSet.getString("email"));
                 usuario.setSenha(this.resultSet.getString("senha"));
-                usuario.setAtivo(this.resultSet.getBoolean("ativo"));
                 Permissao permissao = new Permissao(
                         this.resultSet.getInt("id_permissao"),
                         this.resultSet.getString("nome_permissao")
                 );
-                usuario.setPermissao(permissao);
+//                usuario.setPermissao(permissao);
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -133,7 +121,6 @@ public class UsuarioDao {
             this.preparedStatement.setString(1, u.getNome());
             this.preparedStatement.setString(2, u.getEmail());
             this.preparedStatement.setString(3, u.getSenha());
-            this.preparedStatement.setBoolean(4, u.isAtivo());
             this.preparedStatement.setInt(5, u.getId());
             this.preparedStatement.executeUpdate();
 
