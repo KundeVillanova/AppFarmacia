@@ -2,9 +2,7 @@ package br.csi.service;
 
 import br.csi.dao.UsuarioDao;
 import br.csi.model.usuario.Usuario;
-
 public class UsuarioService {
-
     public Usuario autenticado(String email, String senha) {
         if(email != "" && senha != ""){
         Usuario u = new UsuarioDao().getUsuario(email);

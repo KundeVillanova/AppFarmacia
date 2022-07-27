@@ -11,8 +11,7 @@ public class ConexaoBD {
 
     public Connection getConexao(){
         Connection con = null;
-        try {
-            Class.forName(this.DRIVER);
+        try {Class.forName(this.DRIVER);
             con = DriverManager.getConnection(this.URL, this.USER, this.SENHA);
         }
         catch (ClassNotFoundException e){

@@ -1,7 +1,6 @@
 
 package br.csi.dao;
 
-import br.csi.model.usuario.Permissao;
 import br.csi.model.usuario.Usuario;
 
 import java.sql.*;
@@ -32,19 +31,14 @@ public class UsuarioDao {
                 usuario.setEmail(resultSet.getString("email"));
                 usuario.setSenha(resultSet.getString("senha"));
             }
-
-
         }catch (SQLException e){
             e.printStackTrace();
         }
         return usuario;
     }
     public Usuario criarUsuario(Usuario u){
-//        Calendar calendar = Calendar.getInstance();
-//
         try (Connection connection = new ConexaoBD().getConexao()) {
             this.sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
-            System.out.println(u.getNome());
             this.preparedStatement = connection.prepareStatement(sql);
             this.preparedStatement.setString(1, u.getNome());
             this.preparedStatement.setString(2, u.getEmail());
@@ -54,37 +48,6 @@ public class UsuarioDao {
             e.printStackTrace();
         }
         return u;
-    }
-    public Usuario getUsuarioUnico(int id) {
-        Usuario usuario = new Usuario();
-
-        try(Connection connection = new ConexaoBD().getConexao()){
-            this.sql = "select * from" +
-                    " usuario U, permissao P " +
-                    "where" +
-                    " U.id_permissao = P.id_permissao " +
-                    "and" +
-                    " U.id_usuario = ?";
-
-            this.preparedStatement = connection.prepareStatement(this.sql);
-            this.preparedStatement.setInt(1, id);
-            this.resultSet = this.preparedStatement.executeQuery();
-
-            while (this.resultSet.next()) {
-                usuario.setId(this.resultSet.getInt("id_usuario"));
-                usuario.setNome(this.resultSet.getString("nome"));
-                usuario.setEmail(this.resultSet.getString("email"));
-                usuario.setSenha(this.resultSet.getString("senha"));
-                Permissao permissao = new Permissao(
-                        this.resultSet.getInt("id_permissao"),
-                        this.resultSet.getString("nome_permissao")
-                );
-//                usuario.setPermissao(permissao);
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return usuario;
     }
 
     public String excluir(Usuario u) {

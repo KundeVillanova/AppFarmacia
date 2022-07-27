@@ -11,8 +11,7 @@
     </head>
     <body>
         <div class="container">
-            
-           <%--@elvariable id="user" type="br.csi.model.usuario.Usuario"--%>
+
            <form:form methos="post" action="/app_farm/index/criar" modelAttribute="user">
                 <h1>Criar conta</h1>
 
@@ -28,14 +27,13 @@
 
                 <div class="form-group">
                     <form:label path="senha">Senha:</form:label>
-                    <form:input path="senha" type="text" class="form-control" />
+                    <form:input path="senha" type="password" class="form-control" />
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" value="cadastrar">Cadastrar</button>
+                <input type="submit"  class="btn btn-primary" value="CADASTRAR">
            </form:form>
-
             <br>
-
+            <a class="btn btn-primary" href="/app_farm/index/login">Criar conta</a>
         </div>
     </body>
 </html>

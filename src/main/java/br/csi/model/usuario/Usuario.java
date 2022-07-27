@@ -1,11 +1,6 @@
 package br.csi.model.usuario;
-
-import java.sql.Date;
-
 public class Usuario {
-
     private int id;
-    
     private String nome;
     private String email;
     private String senha;
@@ -15,7 +10,6 @@ public class Usuario {
         this.senha = senha;
     }
     public Usuario() {}
-
     public int getId() {
         return id;
     }
