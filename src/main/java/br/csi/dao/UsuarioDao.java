@@ -10,13 +10,11 @@ public class UsuarioDao {
     private String sql;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
-
     private String status;
 
 
     public Usuario getUsuario(String email){
         Usuario usuario = null;
-
 
         try (Connection connection = new ConexaoBD().getConexao()){
             this.sql = " SELECT * FROM usuario WHERE email = ?";

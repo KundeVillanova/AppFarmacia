@@ -35,6 +35,7 @@ public class beforeLogin {
         model.addAttribute("user", new Usuario());
         return "criarConta";
     }
+
     @RequestMapping(value = "criar", method = POST)
     public String criarConta(@ModelAttribute("user") Usuario user){
         Usuario usuario = new UsuarioService().cadastro(user);

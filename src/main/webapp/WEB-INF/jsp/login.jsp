@@ -10,22 +10,25 @@
     </head>
     <body>
         <div class="container">
-            <h1>Faça Login</h1>
+                <div class="login">
+                    <h1>Faça Login</h1>
 
-            <form action="/app_farm/index/logar" method="post">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <form action="/app_farm/index/logar" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" value="logar" name="logar">Logar</button>
+                    </form>
+                    <br>
+                    <a class="btn btn-primary" href="/app_farm/index/criar">Criar conta</a>
                 </div>
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary" value="logar" name="logar">Logar</button>
-            </form>
-            <br>
-            <a class="btn btn-primary" href="/app_farm/index/criar">Criar conta</a>
+            </row>
         </div>
     </body>
 </html>

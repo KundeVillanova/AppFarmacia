@@ -11,68 +11,89 @@
     </head>
     <body>
 
-        <div class="container">
-            <div class="d-inline-flex p-6 col">
-                <form:form methos="post" action="/app_farm/index/criar" modelAttribute="farm">
-                    <h1>Cadastrar Farmacia</h1>
+        <div class="container  mt-5">
+            <h1>Cadastrar Farmacia</h1>
+            <div class="d-flex flex-column flex-lg-row gap-5">
+                <div class="w-50">
+                    <form:form methos="post" action="/app_farm/app/cadastrarFarm" modelAttribute="farm">
+                        <div class="form-group">
+                            <form:label path="alias_farm">Alias:</form:label>
+                            <form:input path="alias_farm" type="text" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <form:label path="sigla_estado">Estado:</form:label>
-                        <form:input path="sigla_estado" type="text" class="form-control" />
-                    </div>
+                        <div class="form-group">
+                            <form:label path="sigla_estado">Estado:</form:label>
+                            <form:input path="sigla_estado" type="text" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <form:label path="nome_cidade">Nome da cidade:</form:label>
-                        <form:input path="nome_cidade" type="text" class="form-control" />
-                    </div>
+                        <div class="form-group">
+                            <form:label path="nome_cidade">Nome da cidade:</form:label>
+                            <form:input path="nome_cidade" type="text" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <form:label path="rua">Rua:</form:label>
-                        <form:input path="rua" type="text" class="form-control" />
-                    </div>
+                        <div class="form-group">
+                            <form:label path="rua">Rua:</form:label>
+                            <form:input path="rua" type="text" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <form:label path="cep">CEP:</form:label>
-                        <form:input path="cep" type="text" class="form-control" />
-                    </div>
+                        <div class="form-group">
+                            <form:label path="cep">CEP:</form:label>
+                            <form:input path="cep" type="text" class="form-control" />
+                        </div>
 
-                    <div class="form-group">
-                        <form:label path="telefone">Telefone:</form:label>
-                        <form:input path="telefone" type="text" class="form-control" />
-                    </div>
-                    <br>
-                    <input type="submit"  class="btn btn-primary" value="CADASTRAR">
-                </form:form>
-            </div>
-            <div class="d-inline-flex p-6 col">
-                <table class="table table-success table-striped">
-                        <tr class="table-success col">
-                            <th>Alias Farmacia</th>
+                        <div class="form-group">
+                            <form:label path="telefone">Telefone:</form:label>
+                            <form:input path="telefone" type="text" class="form-control" />
+                        </div>
+                        <br>
+                        <input type="submit"  class="btn btn-primary" value="CADASTRAR">
+                    </form:form>
+                </div>
+
+                <div>
+                    <table class="table table-success table-striped">
+                    <c:forEach var="f" items="${farmacias}" >
+                        <tr>
+                            <th>
+                                <p>${f.alias_farm}</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Alias</th>
+                            <th>Editar</th>
+                            <th>Excluir</th>
                             <th>Funcionario</th>
                             <th>Estoque</th>
                         </tr>
 
-                        <tr class="table-success col">
-                            <td>
-                                <h1>ALIAS DA FARMACIA</h1>
-                            </td>
-                            <td>
+                        <tr>
+                            <th>
                                 <form action="" method="get">
                                     <input type="hidden" name="id_func" value="">
                                     <input type="hidden" name="opcao" value="editar" />
                                     <input type="submit" value="EDITAR" />
                                 </form>
-                            </td>
-                            <td>
-                                <form action="cadastro-controller" method="get">
+                            </th>
+                            <th>
+                                <form action="" method="get">
                                     <input type="hidden" name="id_func" value="$">
                                     <input type="hidden" name="opcao" value="excluir" />
-                                    <input type="submit" value="EXCLUIR" />
+                                    <input type="submit" value="Funcionarios" />
+                                </form>
+                            </th>
+                            <td>
+                                <form action="" method="get">
+                                    <input type="hidden" name="id_func" value="$">
+                                    <input type="hidden" name="opcao" value="excluir" />
+                                    <input type="submit" value="Estoque" />
                                 </form>
                             </td>
                         </tr>
-                </table>
+                    </c:forEach>
+                    </table>
+                </div>
             </div>
+
         </div>
     </body>
 </html>
