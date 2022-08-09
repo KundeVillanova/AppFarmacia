@@ -7,7 +7,6 @@ public class Funcionario {
     private String nome_func;
     private String telefone;
     private String data_nasc;
-
     private String funcao;
     private Farmacia farmacia;
     public Farmacia getFarmacia() {

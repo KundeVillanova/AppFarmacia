@@ -21,6 +21,6 @@ section {
 .login{
     margin: auto;
     width: 50%;
-    background: #ffffff;
+    background: rgba(150, 213, 120, 0.69);
     padding: 10px;
 }

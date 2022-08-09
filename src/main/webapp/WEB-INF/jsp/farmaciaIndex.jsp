@@ -15,7 +15,7 @@
             <h1>Cadastrar Farmacia</h1>
             <div class="d-flex flex-column flex-lg-row gap-5">
                 <div class="w-50">
-                    <form:form methos="post" action="/app_farm/app/cadastrarFarm" modelAttribute="farm">
+                    <form:form method="post" action="/app_farm/app/cadastrarFarm" modelAttribute="farm">
                         <div class="form-group">
                             <form:label path="alias_farm">Alias:</form:label>
                             <form:input path="alias_farm" type="text" class="form-control" />
@@ -50,50 +50,49 @@
                     </form:form>
                 </div>
 
-                <div>
+                <div class="w-50">
                     <table class="table table-success table-striped">
-                    <c:forEach var="f" items="${farmacias}" >
-                        <tr>
-                            <th>
-                                <p>${f.alias_farm}</p>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Alias</th>
-                            <th>Editar</th>
-                            <th>Excluir</th>
-                            <th>Funcionario</th>
-                            <th>Estoque</th>
-                        </tr>
+                        <c:forEach var="f" items="${farmacias}">
+                            <tr>
+                                <th>Alias: ${f.alias_farm}</th>
+                            </tr>
 
-                        <tr>
-                            <th>
-                                <form action="" method="get">
-                                    <input type="hidden" name="id_func" value="">
-                                    <input type="hidden" name="opcao" value="editar" />
-                                    <input type="submit" value="EDITAR" />
-                                </form>
-                            </th>
-                            <th>
-                                <form action="" method="get">
-                                    <input type="hidden" name="id_func" value="$">
-                                    <input type="hidden" name="opcao" value="excluir" />
-                                    <input type="submit" value="Funcionarios" />
-                                </form>
-                            </th>
-                            <td>
-                                <form action="" method="get">
-                                    <input type="hidden" name="id_func" value="$">
-                                    <input type="hidden" name="opcao" value="excluir" />
-                                    <input type="submit" value="Estoque" />
-                                </form>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                            <tr>
+                                    <%--                                    <form action="" method="get">--%>
+                                    <%--                                        <input type="hidden" name="id_farm" value="${f.id_farm}">--%>
+                                    <%--                                        <input type="hidden" name="opcao" value="funcionarios" />--%>
+                                    <%--                                        <input type="submit" value="FUNCIONÁRIOS" />--%>
+                                    <%--                                    </form>--%>
+                                <td><a value="${f.id_farm}" class="btn btn-primary" href="/app_farm/app/funcionarios">Funcionarios</a></td>
+
+
+                                    <%--                                    <form action="" method="get">--%>
+                                    <%--                                        <input type="hidden" name="id_farm" value="${f.id_farm}">--%>
+                                    <%--                                        <input type="hidden" name="opcao" value="estoque" />--%>
+                                    <%--                                        <input type="submit" value="ESTOQUE" />--%>
+                                    <%--                                    </form>--%>
+                                <td><a value="${f.id_farm}" class="btn btn-primary" href="/app_farm/app/estoque">Estoque</a></td>
+
+                                <td>
+                                    <form action="" method="get">
+                                        <input type="hidden" name="id_farm" value="${f.id_farm}">
+                                        <input type="hidden" name="opcao" value="editar"/>
+                                        <input type="submit" value="EDITAR"/>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="" method="get">
+                                        <input type="hidden" name="id_func" value="${f.id_farm}">
+                                        <input type="hidden" name="opcao" value="excluir"/>
+                                        <input type="submit" value="EXCLUIR"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
-
+            <a class="btn btn-primary" href="/app_farm/index/login">Sair</a>
         </div>
     </body>
 </html>

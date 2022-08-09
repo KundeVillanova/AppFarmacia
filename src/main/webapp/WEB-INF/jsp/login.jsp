@@ -9,8 +9,8 @@
         <title>Title</title>
     </head>
     <body>
-        <div class="container">
-                <div class="login">
+            <div class="container">
+                <div class="">
                     <h1>Faça Login</h1>
 
                     <form action="/app_farm/index/logar" method="post">

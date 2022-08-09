@@ -1,6 +1,7 @@
 package br.csi.controller;
 import br.csi.model.farmacia.Farmacia;
 import br.csi.model.usuario.Usuario;
+import br.csi.service.FarmaciaService;
 import br.csi.service.UsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,8 @@ public class beforeLogin {
         return new RedirectView("/index/farmaciaIndex", true);
    }
    @GetMapping("/farmaciaIndex")
-   public String farmaciaIndex(@ModelAttribute("farm")Farmacia farmacia) {
+   public String farmaciaIndex(@ModelAttribute("farm")Farmacia farmacia, Model model) {
+        model.addAttribute("farmacias", new FarmaciaService().getFarm());
         return "farmaciaIndex";
    }
     @RequestMapping(value = "criar", method = GET)

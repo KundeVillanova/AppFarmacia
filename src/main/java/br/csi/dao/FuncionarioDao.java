@@ -36,11 +36,12 @@ public class FuncionarioDao {
 
     public Funcionario setFuncionario(Funcionario func) {
         try (Connection connection = new ConexaoBD().getConexao()) {
-            this.sql = "INSERT INTO funcionario (nome_func, telefone, data_nasc) VALUES (?, ?, ?)";
+            this.sql = "INSERT INTO funcionario (nome_func, telefone, data_nasc, funcao) VALUES (?, ?, ?, ?)";
             this.preparedStatement = connection.prepareStatement(sql);
             this.preparedStatement.setString(1, func.getNome_func());
             this.preparedStatement.setString(2, func.getTelefone());
             this.preparedStatement.setString(3, func.getData_nasc());
+            this.preparedStatement.setString(3, func.getFuncao());
             this.preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
