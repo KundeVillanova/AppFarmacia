@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
@@ -19,7 +18,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class afterLogin {
 
     //TODO:metodos da funcionario abaixo
-
     @RequestMapping(value ="funcionarios", method = GET)
     public String redirecionaFuncionarios(Model model){
         model.addAttribute("func", new Funcionario());
@@ -34,6 +32,7 @@ public class afterLogin {
 
 
     //TODO:metodos da farmacia abaixo
+    final static RedirectView redirect = new RedirectView("/app_farm/app/franquias");
     @RequestMapping(value = "franquias", method = GET)
     public String listarFranquias(Model model){
         model.addAttribute("farmacias", new FarmaciaService().getFarm());
@@ -41,9 +40,13 @@ public class afterLogin {
     }
     @RequestMapping(value = "cadastrarFarm", method = POST)
     public RedirectView criarConta(@ModelAttribute("farm") Farmacia farmacia){
-        RedirectView redirect = new RedirectView("/app_farm/app/franquias");
         Farmacia farm = new FarmaciaService().cadastrar(farmacia);
+        RedirectView redirect = new RedirectView("/app_farm/app/franquias");
         return redirect;
     }
-
+    @RequestMapping(value="excluir", method = GET)
+    public RedirectView excluirFarmacia(int id_farmacia){
+        Farmacia farm = new FarmaciaService().excluirFarmacia(id_farmacia);
+        return redirect;
+    }
 }

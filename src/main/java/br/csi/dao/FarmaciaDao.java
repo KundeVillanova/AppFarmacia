@@ -30,9 +30,8 @@ public class FarmaciaDao {
     }
 
 
-
     public ArrayList<Farmacia> getFranquias(){
-
+        //listar farmacias
         ArrayList<Farmacia> franquias = new ArrayList<>();
         try (Connection connection = new ConexaoBD().getConexao()) {
             this.sql = "SELECT id_farm, alias_farm, telefone, sigla_estado, nome_cidade, rua, cep FROM farmacia";
@@ -53,9 +52,25 @@ public class FarmaciaDao {
             E.printStackTrace();
         }
         return franquias;
-
-
-
-
     }
+
+    public String excluirFarm(int id) {
+        try (Connection connection = new ConexaoBD().getConexao()) {
+            connection.setAutoCommit(false);
+            this.sql = "delete from farmacia where id_farm = ?";
+            this.preparedStatement = connection.prepareStatement(this.sql);
+            this.preparedStatement.setInt(1, id);
+            this.preparedStatement.executeUpdate();
+
+            if (this.preparedStatement.getUpdateCount() > 0) {
+                this.status = "OK";
+                connection.commit();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            this.status = "OK";
+        }
+        return "";
+    }
+
 }

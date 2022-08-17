@@ -58,19 +58,9 @@
                             </tr>
 
                             <tr>
-                                    <%--                                    <form action="" method="get">--%>
-                                    <%--                                        <input type="hidden" name="id_farm" value="${f.id_farm}">--%>
-                                    <%--                                        <input type="hidden" name="opcao" value="funcionarios" />--%>
-                                    <%--                                        <input type="submit" value="FUNCIONÁRIOS" />--%>
-                                    <%--                                    </form>--%>
                                 <td><a value="${f.id_farm}" class="btn btn-primary" href="/app_farm/app/funcionarios">Funcionarios</a></td>
 
 
-                                    <%--                                    <form action="" method="get">--%>
-                                    <%--                                        <input type="hidden" name="id_farm" value="${f.id_farm}">--%>
-                                    <%--                                        <input type="hidden" name="opcao" value="estoque" />--%>
-                                    <%--                                        <input type="submit" value="ESTOQUE" />--%>
-                                    <%--                                    </form>--%>
                                 <td><a value="${f.id_farm}" class="btn btn-primary" href="/app_farm/app/estoque">Estoque</a></td>
 
                                 <td>
@@ -81,10 +71,10 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="" method="get">
+                                    <form action="/app_farm/app/excluir" method="get">
                                         <input type="hidden" name="id_func" value="${f.id_farm}">
                                         <input type="hidden" name="opcao" value="excluir"/>
-                                        <input type="submit" value="EXCLUIR"/>
+                                        <input type="submit" value="excluir"/>
                                     </form>
                                 </td>
                             </tr>
