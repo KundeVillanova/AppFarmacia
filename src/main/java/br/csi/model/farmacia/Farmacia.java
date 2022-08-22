@@ -4,28 +4,28 @@ public class Farmacia {
     private int id_farm;
     private String alias_farm;
     private String telefone;
-    private String sigla_estado;
-    private String nome_cidade;
+    private String estado;
+    private String cidade;
     private String rua;
     private String cep;
 
     public Farmacia() {}
 
-    public Farmacia(int id_farm, String alias_farm, String telefone, String sigla_estado, String nome_cidade, String rua, String cep) {
+    public Farmacia(int id_farm, String alias_farm, String telefone, String estado, String cidade, String rua, String cep) {
         this.id_farm = id_farm;
         this.alias_farm = alias_farm;
         this.telefone = telefone;
-        this.sigla_estado = sigla_estado;
-        this.nome_cidade = nome_cidade;
+        this.estado = estado;
+        this.cidade = cidade;
         this.rua = rua;
         this.cep = cep;
     }
 
-    public Farmacia(String alias_farm, String telefone, String sigla_estado, String nome_cidade, String rua, String cep) {
+    public Farmacia(String alias_farm, String telefone, String estado, String cidade, String rua, String cep) {
         this.alias_farm = alias_farm;
         this.telefone = telefone;
-        this.sigla_estado = sigla_estado;
-        this.nome_cidade = nome_cidade;
+        this.estado = estado;
+        this.cidade = cidade;
         this.rua = rua;
         this.cep = cep;
     }
@@ -54,20 +54,20 @@ public class Farmacia {
         this.telefone = telefone;
     }
 
-    public String getSigla_estado() {
-        return sigla_estado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setSigla_estado(String sigla_estado) {
-        this.sigla_estado = sigla_estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getNome_cidade() {
-        return nome_cidade;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setNome_cidade(String nome_cidade) {
-        this.nome_cidade = nome_cidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getRua() {
@@ -86,6 +86,4 @@ public class Farmacia {
         this.cep = cep;
     }
 
-    public void getSigla_estado(String sigla_estado) {
-    }
 }

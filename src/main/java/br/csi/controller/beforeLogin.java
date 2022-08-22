@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -19,21 +20,26 @@ public class beforeLogin {
     public String fazerLogin(){
         return "login";
     }
+
+    @PostMapping(value="logout")
+    public String sair(HttpServletRequest req){
+        req.getSession().invalidate();
+        return "login";
+    }
    @PostMapping("/logar")
    public RedirectView logar(@RequestParam String email, String senha, HttpSession session){
         Usuario usuario = new UsuarioService().autenticado(email, senha);
         if (usuario != null) {
             session.setAttribute("usuario_logado", usuario);
+        } else{
+            session.setAttribute("erro","Usuario ou senha incorretos!");
+            return new RedirectView("/index/login", true);
         }
-        return new RedirectView("/index/farmaciaIndex", true);
+        return new RedirectView("/farm/franquias", true);
    }
-   @GetMapping("/farmaciaIndex")
-   public String farmaciaIndex(@ModelAttribute("farm")Farmacia farmacia, Model model) {
-        model.addAttribute("farmacias", new FarmaciaService().getFarm());
-        return "farmaciaIndex";
-   }
+
     @RequestMapping(value = "criar", method = GET)
-    public String criarConta(Model model){
+    public String criarConta(@ModelAttribute("user") Usuario user,Model model){
         model.addAttribute("user", new Usuario());
         return "criarConta";
     }

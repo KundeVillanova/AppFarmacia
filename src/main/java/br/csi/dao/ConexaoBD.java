@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class ConexaoBD {
     private static final String DRIVER = "org.postgresql.Driver";
-    private static final String URL = "jdbc:postgresql://localhost:5432/FarmApp";
+    private static final String URL = "jdbc:postgresql://localhost:5432/farmaciaDB";
     private static final String USER = "postgres";
     private static final String SENHA = "1234";
 

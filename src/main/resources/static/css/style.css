@@ -1,5 +1,5 @@
 body {
-    background-color: #5dff19;
+    background: rgb(34, 112, 0);
     color: aliceblue;
     font-family: Verdana;
 }
@@ -18,9 +18,4 @@ section {
     background-color: darkblue;
     padding: 50px;
 }
-.login{
-    margin: auto;
-    width: 50%;
-    background: rgba(150, 213, 120, 0.69);
-    padding: 10px;
-}
+
